@@ -1,0 +1,15 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">CRM Система</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Все заявки <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" th:href="@{/new}">Новые заявки</a>
+            <a class="nav-item nav-link" th:href="@{/seen}">Оброботанные заявки</a>
+            <a class="nav-item nav-link" th:href="@{/add}">Добавить заявку</a>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="main_layout.html">
+
+<div layout:fragment="siteContent">
+  <div th:if="${request.isHandled()}" style="color: green"><h1>Обработанная заявка</h1></div>
+  <div th:if="${!request.isHandled()}" style="color: red"><h1>***Новая необработанная заявка***</h1></div>
+  <form action="#" th:action="@{/desc}" method="post">
+    <input th:value="${request.getId()}" type = "hidden" name="id">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">ФИО</label>
+      <input type="text" readonly class="form-control" id="exampleFormControlInput1" placeholder="ФИО" th:value="${request.getUserName()}">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Курс: </label>
+      <select class="form-control" id="exampleFormControlSelect1" th:field="${request.courseName}">
+        <option value="Front-end">Front-end</option>
+        <option value="Back-end">Back-end</option>
+        <option value="Python">Python</option>
+        <option value="C++">C++</option>
+        <option value="Figma">Figma</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Телефон</label>
+      <input type="number" readonly class="form-control" id="exampleFormControlInput5" placeholder="+7(7__)_______"  th:value="${request.getPhone()}">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Коментарии</label>
+      <textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="4"  th:text="${request.getCommentary()}"></textarea>
+    </div>
+    <div class="buttons" style="display: flex; gap: 50px">
+      <button class="btn btn-dark" th:if="${!request.isHandled()}">Обработать заявку</button>
+      <a class="btn btn-danger" th:href="@{delete/{id}(id=${request.getId()})}">Удалить заявку</a>
+    </div>
+
+  </form>
+</div>
+</html>
